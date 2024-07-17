@@ -44,7 +44,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Atepam\\AlphavantageClient\\PackageServiceProvider"
+                "Atepam\\AlphavantageClient\\Providers\\PackageServiceProvider"
             ]
         }
     }

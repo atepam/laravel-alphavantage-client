@@ -31,7 +31,6 @@
     },
     "require": {
         "php": "^8.1",
-        "eventsauce/object-hydrator": "^1.4",
         "illuminate/console": "^11.16.0",
         "illuminate/support": "^11.16"
     },
@@ -45,9 +44,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ClientConfigProvider",
-                "LatestPriceClientProvider",
-                "LatestPriceResponseParserProvider"
+                "LatestPriceClientProvider"
             ]
         }
     }

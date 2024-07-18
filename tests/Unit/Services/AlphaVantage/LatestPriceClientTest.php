@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Atepam\AlphavantageClient\AVLatestPriceFacade;
 use Atepam\AlphavantageClient\Exceptions\AlphaVantage\LatestPriceDataException;
 use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
 use Illuminate\Support\Carbon;
@@ -22,7 +23,7 @@ it('getLatestPrice() returns NULL when it gets rate limited', function () {
 
     fakeHttpForBody($rateLimitResponseBody);
 
-    $candle = getLatestPriceClient()->getLatestPrice('IBM');
+    $candle = AVLatestPriceFacade::getLatestPrice('IBM');
 
     $this->assertNull($candle);
 });
@@ -61,8 +62,7 @@ it('getLatestPrice() returns price data array when it gets valid price data', fu
     ];
     fakeHttpForBody($validPriceResponseData);
 
-    $priceData = getLatestPriceClient()->getLatestPrice('IBM');
-
+    $priceData = AVLatestPriceFacade::getLatestPrice('IBM');
     $this->assertIsArray($priceData);
     $this->assertSame($expectedPriceData, $priceData);
 });
@@ -72,8 +72,6 @@ it('getLatestPrice() returns price data array when it gets valid price data', fu
 it('getLatestPrice() throws LatestPriceDataException when it gets invalid price data', function () {
     fakeHttpForBody(["INVALID Global Quote" => ['irrelevant since top level key is invalid']]);
 
-    $priceData = getLatestPriceClient()->getLatestPrice('IBM');
-
-    $this->assertIsArray($priceData);
+    AVLatestPriceFacade::getLatestPrice('IBM');
 
 })->throws(LatestPriceDataException::class);

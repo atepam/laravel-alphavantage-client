@@ -2,12 +2,8 @@
 
 declare(strict_types=1);
 
-use Atepam\AlphavantageClient\Services\AlphaVantage\ClientConfig;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceResponseParser;
 use Atepam\AlphavantageClient\Tests\PackageTestCase;
 use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 
 /*
@@ -48,27 +44,6 @@ expect()->extend('toBeOne', function () {
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
-
-function deleteFileIfExists(string $file): void
-{
-    if (File::exists(path: $file)) {
-        File::delete($file);
-    }
-}
-
-function getLatestPriceClient(): LatestPriceClient
-{
-    $latestPriceCandleFactory = new LatestPriceResponseParser(
-        config('alphavantage.logErrors', true)
-    );
-
-    $config = new ClientConfig(
-        (string)config('alphavantage.apiKey', 'demo'),
-        (string)config('alphavantage.apiHost', 'https://www.alphavantage.co'),
-    );
-
-    return new LatestPriceClient($config, $latestPriceCandleFactory);
-}
 
 function fakeHttpForBody(array $body): void
 {

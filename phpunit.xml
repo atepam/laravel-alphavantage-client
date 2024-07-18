@@ -15,4 +15,10 @@
             <directory suffix=".php">./src</directory>
         </include>
     </source>
+    <coverage includeUncoveredFiles="true"
+              disableCodeCoverageIgnore="true">
+        <report>
+            <html outputDirectory="./tests/coverage" lowUpperBound="50" highLowerBound="90"/>
+        </report>
+    </coverage>
 </phpunit>

@@ -2,8 +2,12 @@
 
 declare(strict_types=1);
 
+use Atepam\AlphavantageClient\Services\AlphaVantage\ClientConfig;
+use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceCandleFactory;
+use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
 use Atepam\AlphavantageClient\Tests\PackageTestCase;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +53,20 @@ function deleteFileIfExists(string $file): void
     if (File::exists(path: $file)) {
         File::delete($file);
     }
+}
+
+function getLatestPriceClient(): LatestPriceClient
+{
+    $latestPriceCandleFactory = new LatestPriceCandleFactory();
+    $config = new ClientConfig(
+        (string)config('alphaVantage.apiKey', 'demo'),
+        (string)config('alphaVantage.apiHost', 'https://www.alphavantage.co'),
+    );
+
+    return new LatestPriceClient($config, $latestPriceCandleFactory);
+}
+
+function fakeHttpForBody(array $body): void
+{
+    Http::fake(['https://www.alphavantage.co/*' => Http::response($body),]);
 }

@@ -16,7 +16,7 @@ class LatestPriceResponseParserProvider extends ServiceProvider
     {
         $this->app->bind(LatestPriceResponseParser::class, function () {
             return new LatestPriceResponseParser(
-                config('alphaVantage.logErrors', true) // @phpstan-ignore argument.type
+                config('alphavantage.logErrors') // @phpstan-ignore argument.type
             );
         });
     }

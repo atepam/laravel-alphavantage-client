@@ -16,8 +16,8 @@ class ClientConfigProvider extends ServiceProvider
     {
         $this->app->bind(ClientConfig::class, function () {
             return new ClientConfig(
-                config('alphaVantage.apiKey', 'demo'), // @phpstan-ignore argument.type
-                config('alphaVantage.apiHost', 'https://www.alphavantage.co'), // @phpstan-ignore argument.type
+                config('alphavantage.apiKey'), // @phpstan-ignore argument.type
+                config('alphavantage.apiHost'), // @phpstan-ignore argument.type
             );
         });
     }

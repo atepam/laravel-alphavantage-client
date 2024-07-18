@@ -11,11 +11,16 @@ use Illuminate\Support\ServiceProvider;
 
 class LatestPriceClientProvider extends ServiceProvider
 {
+    private const CONFIG_FILE_NAME = 'alphavantage.php';
+    private const CONFIG_FILE_FULL_PATH = __DIR__ . '/../config/' . self::CONFIG_FILE_NAME;
+
     /**
      * Register services.
      */
     public function register(): void
     {
+        $this->mergeConfigFrom(self::CONFIG_FILE_FULL_PATH, 'alphavantage');
+
         $this->app->bind(LatestPriceClient::class, function () {
             return new LatestPriceClient(
                 app(ClientConfig::class),
@@ -29,6 +34,8 @@ class LatestPriceClientProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->publishes([
+            self::CONFIG_FILE_FULL_PATH => config_path(self::CONFIG_FILE_NAME),
+        ]);
     }
 }

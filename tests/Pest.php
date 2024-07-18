@@ -59,12 +59,12 @@ function deleteFileIfExists(string $file): void
 function getLatestPriceClient(): LatestPriceClient
 {
     $latestPriceCandleFactory = new LatestPriceResponseParser(
-        config('alphaVantage.logErrors', true)
+        config('alphavantage.logErrors', true)
     );
 
     $config = new ClientConfig(
-        (string)config('alphaVantage.apiKey', 'demo'),
-        (string)config('alphaVantage.apiHost', 'https://www.alphavantage.co'),
+        (string)config('alphavantage.apiKey', 'demo'),
+        (string)config('alphavantage.apiHost', 'https://www.alphavantage.co'),
     );
 
     return new LatestPriceClient($config, $latestPriceCandleFactory);

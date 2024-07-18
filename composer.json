@@ -49,7 +49,7 @@
                 "Atepam\\AlphavantageClient\\Providers\\LatestPriceResponseParserProvider"
             ],
             "aliases": {
-                "AVLatestPrice": "Atepam\\AlphavantageClient\\AVLatestPriceFacade"
+                "AVLatestPrice": "Atepam\\AlphavantageClient\\Facades\\AVLatestPrice"
             }
         }
     }

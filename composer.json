@@ -44,9 +44,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ClientConfigProvider",
-                "LatestPriceClientProvider",
-                "LatestPriceResponseParserProvider"
+                "Atepam\\AlphavantageClient\\Providers\\ClientConfigProvider",
+                "Atepam\\AlphavantageClient\\Providers\\LatestPriceClientProvider",
+                "Atepam\\AlphavantageClient\\Providers\\LatestPriceResponseParserProvider"
             ]
         }
     }

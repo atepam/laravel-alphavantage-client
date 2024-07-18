@@ -45,7 +45,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LatestPriceClientProvider"
+                "ClientConfigProvider",
+                "LatestPriceClientProvider",
+                "LatestPriceResponseParserProvider"
             ]
         }
     }

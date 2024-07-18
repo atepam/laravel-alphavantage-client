@@ -5,21 +5,19 @@ declare(strict_types=1);
 namespace Atepam\AlphavantageClient\Providers;
 
 use Atepam\AlphavantageClient\Services\AlphaVantage\ClientConfig;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceResponseParser;
 use Illuminate\Support\ServiceProvider;
 
-class LatestPriceClientProvider extends ServiceProvider
+class ClientConfigProvider extends ServiceProvider
 {
     /**
      * Register services.
      */
     public function register(): void
     {
-        $this->app->bind(LatestPriceClient::class, function () {
-            return new LatestPriceClient(
-                app(ClientConfig::class),
-                app(LatestPriceResponseParser::class)
+        $this->app->bind(ClientConfig::class, function () {
+            return new ClientConfig(
+                config('alphaVantage.apiKey', 'demo'), // @phpstan-ignore argument.type
+                config('alphaVantage.apiHost', 'https://www.alphavantage.co'), // @phpstan-ignore argument.type
             );
         });
     }

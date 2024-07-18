@@ -23,6 +23,7 @@ abstract class AbstractAlphaVantageClient
     }
 
     /**
+     * @param array<string, string> $parameters
      * @throws RateLimitException|ConnectionException
      */
     protected function get(array $parameters): ?Response
@@ -62,6 +63,9 @@ abstract class AbstractAlphaVantageClient
         );
     }
 
+    /**
+     * @param array<string, string> $params
+     */
     protected function buildApiUrl(array $params): string
     {
         return sprintf(
@@ -72,6 +76,9 @@ abstract class AbstractAlphaVantageClient
         );
     }
 
+    /**
+     * @param array<string, string> $params
+     */
     protected function buildQueryParams(array $params): string
     {
         // This '+' operator is REQUIRED because the API is sensitive for the query param order. (for 'demo' apiKey for sure)
@@ -89,7 +96,7 @@ abstract class AbstractAlphaVantageClient
      */
     protected function checkRateLimit(Response $response): void
     {
-        $data = $response->json();
+        $data = (array)$response->json();
 
         if (
             array_key_exists('Information', $data)

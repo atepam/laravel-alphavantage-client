@@ -14,13 +14,14 @@ class LatestPriceClient extends AbstractAlphaVantageClient
     public const BASE_URI = '/query';
 
     public function __construct(
-        ClientConfig                              $config,
-        private readonly LatestPriceCandleFactory $candleFactory,
+        ClientConfig                               $config,
+        private readonly LatestPriceResponseParser $responseParser,
     ) {
         parent::__construct($config);
     }
 
     /**
+     * @return null|array<string, string>
      * @throws LatestPriceDataException|RateLimitException|ConnectionException
      */
     public function getLatestPrice(string $symbol): ?array
@@ -28,7 +29,7 @@ class LatestPriceClient extends AbstractAlphaVantageClient
         $response = $this->get(['symbol' => $symbol]);
 
         return $response
-            ? $this->candleFactory->createFromApiResponse($response)
+            ? $this->responseParser->parse($response)
             : null;
     }
 }

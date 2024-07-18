@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Atepam\AlphavantageClient\Exceptions\AlphaVantage\LatestPriceDataException;
 use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Log;
 
 it('can instantiate latest price client with valid config successfully', function () {
     $this->assertInstanceOf(
@@ -77,14 +76,4 @@ it('getLatestPrice() throws LatestPriceDataException when it gets invalid price 
 
     $this->assertIsArray($priceData);
 
-})->throws(LatestPriceDataException::class);
-
-
-
-it('getLatestPrice() logs error details on critical level when it gets invalid price data', function () {
-    Log::shouldReceive('critical')->once();
-
-    fakeHttpForBody(["INVALID Global Quote" => ['irrelevant since top level key is invalid']]);
-
-    getLatestPriceClient()->getLatestPrice('IBM');
 })->throws(LatestPriceDataException::class);

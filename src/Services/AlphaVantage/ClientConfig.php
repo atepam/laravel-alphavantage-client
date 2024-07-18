@@ -16,8 +16,9 @@ class ClientConfig
      *
      */
     public function __construct(
-        public string $apiKey,
-        public string $apiHost,
+        public readonly string $apiKey,
+        public readonly string $apiHost,
+        public readonly bool   $logErrors = false,
     ) {
         $this->validateApiKey();
         $this->validateApiHost();

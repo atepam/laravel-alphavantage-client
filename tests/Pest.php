@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 use Atepam\AlphavantageClient\Services\AlphaVantage\ClientConfig;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceCandleFactory;
 use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
+use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceResponseParser;
 use Atepam\AlphavantageClient\Tests\PackageTestCase;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 
@@ -57,7 +58,10 @@ function deleteFileIfExists(string $file): void
 
 function getLatestPriceClient(): LatestPriceClient
 {
-    $latestPriceCandleFactory = new LatestPriceCandleFactory();
+    $latestPriceCandleFactory = new LatestPriceResponseParser(
+        config('alphaVantage.logErrors', true)
+    );
+
     $config = new ClientConfig(
         (string)config('alphaVantage.apiKey', 'demo'),
         (string)config('alphaVantage.apiHost', 'https://www.alphavantage.co'),
@@ -69,4 +73,12 @@ function getLatestPriceClient(): LatestPriceClient
 function fakeHttpForBody(array $body): void
 {
     Http::fake(['https://www.alphavantage.co/*' => Http::response($body),]);
+}
+
+
+function getInvalidResponse(): Response
+{
+    $guzzleResponse = new \GuzzleHttp\Psr7\Response(200, [], json_encode(["INVALID Global Quote" => ['irrelevant since top level key is invalid']]));
+
+    return new Response($guzzleResponse);
 }

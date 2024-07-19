@@ -21,7 +21,7 @@ it('getLatestPrice() returns NULL when it gets rate limited', function () {
         'Information' => fake()->words(5, true) . 'API rate limit' . fake()->words(5, true),
     ];
 
-    fakeHttpForBody($rateLimitResponseBody);
+    $this->fakeHttpForBody($rateLimitResponseBody);
 
     $candle = AVLatestPrice::getLatestPrice('IBM');
 
@@ -60,7 +60,7 @@ it('getLatestPrice() returns price data array when it gets valid price data', fu
             "09. change" => "2.5500",
             "10. change percent" => "1.4786%"]
     ];
-    fakeHttpForBody($validPriceResponseData);
+    $this->fakeHttpForBody($validPriceResponseData);
 
     $priceData = AVLatestPrice::getLatestPrice('IBM');
     $this->assertIsArray($priceData);
@@ -70,7 +70,7 @@ it('getLatestPrice() returns price data array when it gets valid price data', fu
 
 
 it('getLatestPrice() throws LatestPriceDataException when it gets invalid price data', function () {
-    fakeHttpForBody(["INVALID Global Quote" => ['irrelevant since top level key is invalid']]);
+    $this->fakeHttpForBody(["INVALID Global Quote" => ['irrelevant since top level key is invalid']]);
 
     AVLatestPrice::getLatestPrice('IBM');
 

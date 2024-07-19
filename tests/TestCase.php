@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Atepam\AlphavantageClient\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

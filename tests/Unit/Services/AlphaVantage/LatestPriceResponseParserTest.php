@@ -10,7 +10,7 @@ it('parse() logs when it gets invalid price data and log is enabled', function (
     Log::shouldReceive('critical')->once();
 
     $factory = new LatestPriceResponseParser(true);
-    $factory->parse(getInvalidResponse());
+    $factory->parse($this->getInvalidResponse());
 
 })->throws(LatestPriceDataException::class);
 
@@ -20,6 +20,6 @@ it('parse() does not log when it gets invalid price data and log is disabled', f
     Log::shouldReceive('critical')->never();
 
     $factory = new LatestPriceResponseParser(false);
-    $factory->parse(getInvalidResponse());
+    $factory->parse($this->getInvalidResponse());
 
 })->throws(LatestPriceDataException::class);

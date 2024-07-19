@@ -3,8 +3,6 @@
 declare(strict_types=1);
 
 use Atepam\AlphavantageClient\Tests\PackageTestCase;
-use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,16 +42,3 @@ expect()->extend('toBeOne', function () {
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
-
-function fakeHttpForBody(array $body): void
-{
-    Http::fake(['https://www.alphavantage.co/*' => Http::response($body),]);
-}
-
-
-function getInvalidResponse(): Response
-{
-    $guzzleResponse = new \GuzzleHttp\Psr7\Response(200, [], json_encode(["INVALID Global Quote" => ['irrelevant since top level key is invalid']]));
-
-    return new Response($guzzleResponse);
-}

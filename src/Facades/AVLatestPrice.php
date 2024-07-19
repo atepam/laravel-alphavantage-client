@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atepam\AlphavantageClient\Facades;
 
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
+use Atepam\AlphavantageClient\Services\LatestPrice;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -14,6 +14,6 @@ class AVLatestPrice extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return LatestPriceClient::class;
+        return LatestPrice::class;
     }
 }

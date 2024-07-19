@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Atepam\AlphavantageClient\Services\AlphaVantage;
+namespace Atepam\AlphavantageClient\Services;
 
-use Atepam\AlphavantageClient\Exceptions\AlphaVantage\ConfigurationException;
+use Atepam\AlphavantageClient\Exceptions\ConfigurationException;
 
 class ClientConfig
 {

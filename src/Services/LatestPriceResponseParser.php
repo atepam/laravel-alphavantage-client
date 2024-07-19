@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Atepam\AlphavantageClient\Services\AlphaVantage;
+namespace Atepam\AlphavantageClient\Services;
 
-use Atepam\AlphavantageClient\Exceptions\AlphaVantage\LatestPriceDataException;
+use Atepam\AlphavantageClient\Exceptions\LatestPriceDataException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;

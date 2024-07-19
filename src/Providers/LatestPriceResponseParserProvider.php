@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atepam\AlphavantageClient\Providers;
 
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceResponseParser;
+use Atepam\AlphavantageClient\Services\LatestPriceResponseParser;
 use Illuminate\Support\ServiceProvider;
 
 class LatestPriceResponseParserProvider extends ServiceProvider

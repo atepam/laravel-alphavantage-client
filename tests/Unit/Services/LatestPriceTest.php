@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-use Atepam\AlphavantageClient\Exceptions\AlphaVantage\LatestPriceDataException;
+use Atepam\AlphavantageClient\Exceptions\LatestPriceDataException;
 use Atepam\AlphavantageClient\Facades\AVLatestPrice;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
+use Atepam\AlphavantageClient\Services\LatestPrice;
 use Illuminate\Support\Carbon;
 
 it('can instantiate latest price client with valid config successfully', function () {
     $this->assertInstanceOf(
-        LatestPriceClient::class,
-        app(LatestPriceClient::class)
+        LatestPrice::class,
+        app(LatestPrice::class)
     );
 });
 

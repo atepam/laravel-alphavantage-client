@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Atepam\AlphavantageClient\Providers;
 
-use Atepam\AlphavantageClient\Services\AlphaVantage\ClientConfig;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceResponseParser;
+use Atepam\AlphavantageClient\Services\ClientConfig;
+use Atepam\AlphavantageClient\Services\LatestPrice;
+use Atepam\AlphavantageClient\Services\LatestPriceResponseParser;
 use Illuminate\Support\ServiceProvider;
 
 class LatestPriceClientProvider extends ServiceProvider
@@ -21,8 +21,8 @@ class LatestPriceClientProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(self::CONFIG_FILE_FULL_PATH, 'alphavantage');
 
-        $this->app->bind(LatestPriceClient::class, function () {
-            return new LatestPriceClient(
+        $this->app->bind(LatestPrice::class, function () {
+            return new LatestPrice(
                 app(ClientConfig::class),
                 app(LatestPriceResponseParser::class)
             );

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Atepam\AlphavantageClient\Providers;
 
-use Atepam\AlphavantageClient\Services\AlphaVantage\ClientConfig;
+use Atepam\AlphavantageClient\Services\ClientConfig;
 use Illuminate\Support\ServiceProvider;
 
 class ClientConfigProvider extends ServiceProvider

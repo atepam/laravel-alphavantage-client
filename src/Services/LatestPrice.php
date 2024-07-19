@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Atepam\AlphavantageClient\Services\AlphaVantage;
+namespace Atepam\AlphavantageClient\Services;
 
-use Atepam\AlphavantageClient\Exceptions\AlphaVantage\LatestPriceDataException;
-use Atepam\AlphavantageClient\Exceptions\AlphaVantage\RateLimitException;
+use Atepam\AlphavantageClient\Exceptions\LatestPriceDataException;
+use Atepam\AlphavantageClient\Exceptions\RateLimitException;
 use Illuminate\Http\Client\ConnectionException;
 
-class LatestPriceClient extends AbstractAlphaVantageClient
+class LatestPrice extends AvClient
 {
     public const FUNCTION = 'GLOBAL_QUOTE';
     public const BASE_URI = '/query';

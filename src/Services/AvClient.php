@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Atepam\AlphavantageClient\Services\AlphaVantage;
+namespace Atepam\AlphavantageClient\Services;
 
-use Atepam\AlphavantageClient\Exceptions\AlphaVantage\RateLimitException;
+use Atepam\AlphavantageClient\Exceptions\RateLimitException;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Throwable;
 
-abstract class AbstractAlphaVantageClient
+abstract class AvClient
 {
     public const FUNCTION = '';
     public const BASE_URI = '/';

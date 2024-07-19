@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 
-use Atepam\AlphavantageClient\Exceptions\AlphaVantage\ConfigurationException;
-use Atepam\AlphavantageClient\Services\AlphaVantage\ClientConfig;
+use Atepam\AlphavantageClient\Exceptions\ConfigurationException;
+use Atepam\AlphavantageClient\Services\ClientConfig;
 
 it('can be instantiated successfully with valid config', function () {
     $this->assertInstanceOf(

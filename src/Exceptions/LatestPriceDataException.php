@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Atepam\AlphavantageClient\Exceptions\AlphaVantage;
+namespace Atepam\AlphavantageClient\Exceptions;
 
 use Exception;
 

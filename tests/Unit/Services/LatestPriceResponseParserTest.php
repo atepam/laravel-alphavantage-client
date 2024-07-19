@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Atepam\AlphavantageClient\Exceptions\AlphaVantage\LatestPriceDataException;
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceResponseParser;
+use Atepam\AlphavantageClient\Exceptions\LatestPriceDataException;
+use Atepam\AlphavantageClient\Services\LatestPriceResponseParser;
 use Illuminate\Support\Facades\Log;
 
 it('parse() logs when it gets invalid price data and log is enabled', function () {

@@ -31,12 +31,12 @@ Or via DI container
 
 namespace App;
 
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
+use Atepam\AlphavantageClient\Services\LatestPrice;
 
 class ThisIsTheClass
 {
     public function __construct(
-        public readonly LatestPriceClient $avLatestPrice,
+        public readonly LatestPrice $avLatestPrice,
     )
     {
       //
@@ -51,9 +51,9 @@ class ThisIsTheClass
 Or instantiate
 
 ```php
-use Atepam\AlphavantageClient\Services\AlphaVantage\LatestPriceClient;
+use Atepam\AlphavantageClient\Services\LatestPrice;
 
-$client = app(LatestPriceClient::class);
+$client = app(LatestPrice::class);
 $data = $client->getLatestPrice('IBM');
 
 ```
